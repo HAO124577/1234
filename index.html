@@ -1,0 +1,83 @@
+<html>
+<head>
+    <style>
+        body {
+            background-color: white;
+            color: black;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-top: 20px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: block;
+            width: 200px;
+            height: 50px;
+            background-color: blue;
+            color: white;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: lightblue;
+        }
+        form {
+            display: none;
+            width: 300px;
+            margin: 0 auto;
+        }
+        input {
+            display: block;
+            width: 280px;
+            height: 30px;
+            margin: 10px auto;
+            border: 1px solid gray;
+        }
+    </style>
+    <script>
+        function showForm(type) {
+            var form = document.getElementById("form");
+            var title = document.getElementById("title");
+            var buttons = document.getElementsByClassName("buttons")[0];
+
+            title.innerHTML = "Заказать бота " + type; // меняем заголовок в зависимости от типа бота
+            form.style.display = "block"; // показываем форму
+            buttons.style.display = "none"; // скрываем кнопки
+        }
+
+        function sendOrder() {
+            var phone = document.getElementById("phone").value;
+            var email = document.getElementById("email").value;
+            var budget = document.getElementById("budget").value;
+
+            // здесь можно добавить код для отправки данных заказа владельцу бота, например, через API телеграма
+
+            alert("Форма отправлена, если вы правильно все заполнили, вам напишут в течении 3 часов."); // выводим сообщение пользователю
+        }
+    </script>
+</head>
+<body>
+    <h1 id="title">ЗАКАЗАТЬ БОТА ОНЛАЙН</h1>
+    <div class="buttons">
+        <button class="button" onclick="showForm('STANDARD BOT')">STANDARD BOT</button>
+        <button class="button" onclick="showForm('STANDARD+ BOT')">STANDARD+ BOT</button>
+        <button class="button" onclick="showForm('PROFESSIONAL BOT')">PROFESSIONAL BOT</button>
+        <button class="button" onclick="showForm('ПОДДЕРЖКА')">ПОДДЕРЖКА</button>
+    </div>
+    <form id="form">
+        <input id="phone" type="tel" placeholder="Телефон" required>
+        <input id="email" type="email" placeholder="Email" required>
+        <input id="budget" type="number" placeholder="Бюджет" required>
+        <button onclick="sendOrder()">Отправить</button>
+    </form>
+</body>
+</html>
